@@ -10,51 +10,60 @@
         android:layout_height="wrap_content"
         app:cardBackgroundColor="@android:color/darker_gray">
 
-        <TextView
-            android:id="@+id/name"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="160dp"
-            android:text="name"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+            android:gravity="center"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/hall_num"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingLeft="10dp"
-            android:paddingTop="70dp"
-            android:text="hall_num" />
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="name"
+                android:paddingBottom="20dp"
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingLeft="160dp"
-            android:paddingTop="50dp"
-            android:text="time" />
+            <TextView
+                android:id="@+id/time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="time" />
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/sec_num"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingLeft="280dp"
-            android:paddingTop="70dp"
-            android:text="section number : 2" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="90dp"
+            android:gravity="center"
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/days"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingLeft="160dp"
-            android:paddingTop="70dp"
-            android:text="time" />
+            <TextView
+                android:id="@+id/hall_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="hall_num"
+                android:paddingRight="80dp"/>
+
+            <TextView
+                android:id="@+id/days"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="day"
+                android:paddingRight="60dp"/>
+
+            <TextView
+                android:id="@+id/sec_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="section number : 2" />
+        </LinearLayout>
 
     </android.support.v7.widget.CardView>
 
     <Space
         android:layout_width="match_parent"
         android:layout_height="20dp"
-        android:layout_marginTop="100dp" />
+        android:layout_marginTop="110dp" />
 </RelativeLayout>

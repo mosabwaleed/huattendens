@@ -12,9 +12,12 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.zxing.WriterException;
+
+import java.util.Random;
 
 import androidmads.library.qrgenearator.QRGContents;
 import androidmads.library.qrgenearator.QRGEncoder;
@@ -31,6 +34,7 @@ public class qr_and_pass extends AppCompatActivity {
     QRGEncoder qrgEncoder;
     boolean save;
     String result;
+    TextView pass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +44,7 @@ public class qr_and_pass extends AppCompatActivity {
         edtValue = findViewById(R.id.lecture);
         generate = findViewById(R.id.generate);
         qrImage = findViewById(R.id.imageView2);
+        pass = findViewById(R.id.pass);
 
         generate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,13 +78,9 @@ public class qr_and_pass extends AppCompatActivity {
                 } else {
                     edtValue.setError("Required");
                 }
-                try {
-                    save = QRGSaver.save(savePath, edtValue.getText().toString().trim(), bitmap, QRGContents.ImageType.IMAGE_JPEG);
-                    result = save ? "Image Saved" : "Image Not Saved";
-                    Toast.makeText(getApplicationContext(), result, Toast.LENGTH_LONG).show();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+
+
+                pass.setText(GetPassword());
 
             }
         });
@@ -88,5 +89,20 @@ public class qr_and_pass extends AppCompatActivity {
         public String intent (String key){
         return getIntent().getStringExtra(key);
         }
+
+
+    public String GetPassword(){
+        char[] chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789".toCharArray();
+        StringBuilder stringBuilder = new StringBuilder();
+
+        Random rand = new Random();
+
+        for(int i = 0; i < 7; i++){
+            char c = chars[rand.nextInt(chars.length)];
+            stringBuilder.append(c);
+        }
+
+        return stringBuilder.toString();
+    }
     }
 

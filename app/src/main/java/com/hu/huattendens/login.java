@@ -22,6 +22,7 @@ public class login extends AppCompatActivity {
     Button login;
     final String TAG = "login";
     int wrong;
+    SharedPreference sharedPreference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +31,7 @@ public class login extends AppCompatActivity {
         id = findViewById(R.id.id);
         pass =findViewById(R.id.pass);
         db = FirebaseFirestore.getInstance();
+        sharedPreference = new SharedPreference();
         login = findViewById(R.id.login);
         login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,6 +45,7 @@ public class login extends AppCompatActivity {
                                     for (QueryDocumentSnapshot document : task.getResult()) {
                                         if (document.getData().get("id").equals(id.getText().toString())&&
                                         document.getData().get("pass").equals(pass.getText().toString())){
+                                            sharedPreference.addFavorite(login.this,new info(id.getText().toString(),pass.getText().toString()));
                                             Intent intent = new Intent(login.this,data.class);
                                             intent.putExtra("id",document.getData().get("id").toString());
                                             startActivity(intent);
@@ -63,5 +66,15 @@ public class login extends AppCompatActivity {
         });
 
 
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if(sharedPreference.getFavorites(login.this).size()==1){
+            Intent intent = new Intent(login.this,data.class);
+            intent.putExtra("id",sharedPreference.getFavorites(login.this).get(0).getId());
+            startActivity(intent);
+        }
     }
 }

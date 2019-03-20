@@ -45,7 +45,7 @@ public class login extends AppCompatActivity {
                                     for (QueryDocumentSnapshot document : task.getResult()) {
                                         if (document.getData().get("id").equals(id.getText().toString())&&
                                         document.getData().get("pass").equals(pass.getText().toString())){
-                                            sharedPreference.addFavorite(login.this,new info(id.getText().toString(),pass.getText().toString()));
+                                            sharedPreference.addFavorite(login.this,new info(id.getText().toString(),pass.getText().toString(),document.get("name").toString()));
                                             Intent intent = new Intent(login.this,data.class);
                                             intent.putExtra("id",document.getData().get("id").toString());
                                             startActivity(intent);

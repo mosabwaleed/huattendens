@@ -79,7 +79,7 @@ public class qr_and_pass extends AppCompatActivity {
                 } else {
                     edtValue.setError("Required");
                 }
-                pass.setText(GetPassword());
+                pass.setText(inputValue);
             }
         });
         }
@@ -92,7 +92,7 @@ public class qr_and_pass extends AppCompatActivity {
 
         Random rand = new Random();
 
-        for(int i = 0; i < 10; i++){
+        for(int i = 0; i < 3; i++){
             char c = chars[rand.nextInt(chars.length)];
             stringBuilder.append(c);
         }

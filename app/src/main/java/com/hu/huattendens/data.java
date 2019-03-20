@@ -22,12 +22,8 @@ public class data extends AppCompatActivity {
     private static RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
     FirebaseFirestore db ;
-    final String TAG = "data";
     String id;
     material_data material_data;
-    String selectedName;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

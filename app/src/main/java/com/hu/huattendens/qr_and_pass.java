@@ -31,7 +31,7 @@ public class qr_and_pass extends AppCompatActivity {
     String TAG = "GenerateQRCode";
     EditText edtValue;
     ImageView qrImage;
-    Button generate;
+    Button generate,manual;
     String inputValue;
     Bitmap bitmap;
     QRGEncoder qrgEncoder;
@@ -52,6 +52,14 @@ public class qr_and_pass extends AppCompatActivity {
         sharedPreference = new SharedPreference();
         arrayList=new ArrayList<>();
         arrayList=sharedPreference.getFavorites(qr_and_pass.this);
+        manual = findViewById(R.id.manual);
+        manual.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog_manual dialog_manual = new dialog_manual(qr_and_pass.this,arrayList.get(0).getId(),intent("name")+"_"+edtValue.getText().toString().trim());
+                dialog_manual.show();
+            }
+        });
         generate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
